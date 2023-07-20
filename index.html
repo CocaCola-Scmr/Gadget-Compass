@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="assets/logo.png">
+    <title>Gadget Compass</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500&family=Poppins:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="home" class="home">
+
+        <img id="logo" src="assets/logo.png">
+
+        <h1>Welcome to Gadget Compass!</h1>
+        <p>Not sure what phone to buy? No problem! Simply take the quiz below and answer a few 
+            questions about what you would like out of your new device. With this information, Gadget 
+            Compass will provide you with a personalised selection of phones - tailored to your 
+            individual needs to ensure you make the best possible shopping decision.</p>
+
+        <img id="homeImage" src="assets/homeImage.png">
+        <button id="startButton" onclick="startQuiz()"><b>Take The Quiz</b></button>
+        <button id="viewDatabaseButton" onclick="changeScreen(home, deviceDatabase)"><b>Product Database</b></button>
+
+    </div>
+
+    <div id="brandSelection" class="brandSelection">
+
+        <img id="quizBackground" src="assets/quizBackground.png">
+            <a href="https://docs.google.com/document/d/1FVjaOIfgic6LVNt01zRSsASwd-EuYc7U4bkIEFH4xYY/edit?usp=sharing" target="_blank">
+        <img src="assets/helpIcon.png" alt="Help" id="helpIcon"></a>
+        <button id="closeButton" onclick="closeQuiz(brandSelection)"><img src="assets/closeIcon.png"></button>
+        <h2>First off, are there any particular brands you're interested in? Select all that apply</h2>
+
+        <div id="brandOptionsContainer" class="brandOptionsContainer">
+            <button id="selectionButton" onclick="addBrandPreference(this)">Apple</button>
+            <button id="selectionButton" onclick="addBrandPreference(this)">Samsung</button>
+            <button id="selectionButton" onclick="addBrandPreference(this)">Google</button>
+            <button id="selectionButton" onclick="addBrandPreference(this)">Nokia</button>
+            <button id="selectionButton" onclick="addBrandPreference(this)">Oppo</button>
+            <button id="selectionButton" onclick="addBrandPreference(this)">Other</button>
+        </div>
+
+        <button id="nextScreenSkippable" onclick="changeScreen(brandSelection, priceSelection);
+        if(brandPreferences.length == 0){allBrandPreferences()}"><b>Skip</b></button>
+
+    </div>
+
+    <div id="priceSelection" class="priceSelection">
+
+        <img id="quizBackground" src="assets/quizBackground.png">
+            <a href="https://docs.google.com/document/d/1FVjaOIfgic6LVNt01zRSsASwd-EuYc7U4bkIEFH4xYY/edit?usp=sharing" target="_blank">
+        <img src="assets/helpIcon.png" alt="Help" id="helpIcon"></a>
+        <button id="closeButton" onclick="closeQuiz(priceSelection)"><img src="assets/closeIcon.png"></button>
+        <h2>What is the maximum amount of money you are willing to spend?</h2>
+
+        <input type="range" min="450" max="3000" value="1500" step="50" class="slider" id="priceSlider">
+        <p id="priceSliderValue">$1500</p>
+        <p id="leftSliderLabel"><b>$450</b></p>
+        <p id="rightSliderLabel"><b>$3000</b></p>
+
+        <button id="backButton" onclick="changeScreen(priceSelection, brandSelection); refreshBrandPreferences()"><b>Back</b></button>
+        <button id="nextScreenSkippable" onclick="changeScreen(priceSelection, screenSizeSelection)"><b>Skip</b></button>
+
+    </div>
+
+    <div id="screenSizeSelection" class="screenSizeSelection">
+
+        <img id="quizBackground" src="assets/quizBackground.png">
+        <a href="https://docs.google.com/document/d/1FVjaOIfgic6LVNt01zRSsASwd-EuYc7U4bkIEFH4xYY/edit?usp=sharing" target="_blank">
+            <img src="assets/helpIcon.png" alt="Help" id="helpIcon"></a>
+        <button id="closeButton" onclick="closeQuiz(screenSizeSelection)"><img src="assets/closeIcon.png"></button>
+        <h2>What is your preferred screen size?</h2>
+
+        <div id="screenOptionsContainer" class="screenOptionsContainer">
+            
+            <button id="selectionButton" onclick="addScreenPreference('small', this)">
+                <p>Small</p>
+                <p id="buttonSubtext" >5.8" and below</p>
+            </button>
+
+            <button id="selectionButton" onclick="addScreenPreference('medium', this)">
+                <p>Medium</p>
+                <p id="buttonSubtext">5.9" to 6.4"</p>
+            </button>
+
+            <button id="selectionButton" onclick="addScreenPreference('large', this)">
+                <p>Large</p>
+                <p id="buttonSubtext">Above 6.4"</p>
+            </button>
+
+        </div>
+
+        <button id="backButton" onclick="changeScreen(screenSizeSelection, priceSelection)"><b>Back</b></button>
+        <button id="nextScreenSkippable" onclick="changeScreen(screenSizeSelection, batteryLifeSelection); 
+        if(screenSizePreferences.length == 0){refreshScreenSizePreferences()};"><b>Skip</b></button>
+        
+    </div>
+
+    <div id="batteryLifeSelection" class="batteryLifeSelection">
+
+        <img id="quizBackground" src="assets/quizBackground.png">
+        <a href="https://docs.google.com/document/d/1FVjaOIfgic6LVNt01zRSsASwd-EuYc7U4bkIEFH4xYY/edit?usp=sharing" target="_blank">
+            <img src="assets/helpIcon.png" alt="Help" id="helpIcon"></a>
+        <button id="closeButton" onclick="closeQuiz(batteryLifeSelection)"><img src="assets/closeIcon.png"></button>
+        <h2>What kind of battery life do you need?</h2>
+        <div id="batteryLifeOptionsContainer" class="batteryLifeOptionsContainer">
+
+            <button id="selectionButton" onclick="updateBatteryPreference('short', this)">
+                <p>Short</p>
+                <p id="buttonSubtext">Can just last a day with light use</p>
+            </button>
+
+            <button id="selectionButton" onclick="updateBatteryPreference('moderate', this)">
+                <p>Moderate</p>
+                <p id="buttonSubtext">Can last a day with moderate use</p>
+            </button>
+
+            <button id="selectionButton" onclick="updateBatteryPreference('long', this)">
+                <p>Long</p>
+                <p id="buttonSubtext">Can last a day or more with moderate to heavy use</p>
+            </button>
+
+        </div>
+
+        <button id="backButton" onclick="changeScreen(batteryLifeSelection, screenSizeSelection)"><b>Back</b></button>
+        <button id="nextScreenSkippable" onclick="changeScreen(batteryLifeSelection, performanceSelection); 
+        if(batteryPreferences.length == 0){refreshBatteryPreferences()};"><b>Skip</b></button>
+
+    </div>
+
+    <div id="performanceSelection" class="performanceSelection">
+
+        <img id="quizBackground" src="assets/quizBackground.png">
+        <a href="https://docs.google.com/document/d/1FVjaOIfgic6LVNt01zRSsASwd-EuYc7U4bkIEFH4xYY/edit?usp=sharing" target="_blank">
+            <img src="assets/helpIcon.png" alt="Help" id="helpIcon"></a>
+        <button id="closeButton" onclick="closeQuiz(performanceSelection)"><img src="assets/closeIcon.png"></button>
+        <h2>What type of performance do you need?</h2>
+
+        <div id="performanceOptionsContainer" class="performanceOptionsContainer">
+
+            <button id="selectionButton" onclick="updatePerformancePreference('low', this)">
+                <p>Low</p>
+                <p id="buttonSubtext">Phone calls, messaging, Instagram, TikTok, Snapchat etc. Little to no multitasking</p>
+            </button>
+
+            <button id="selectionButton" onclick="updatePerformancePreference('medium', this)">
+                <p>Medium</p>
+                <p id="buttonSubtext">Casual gaming, web browsing, productivity apps etc. Moderate multitasking.</p>
+            </button>
+
+            <button id="selectionButton" onclick="updatePerformancePreference('high', this)">
+                <p>High</p>
+                <p id="buttonSubtext">Heavy gaming, frequent web browsing, heavy camera usage etc. Intense multitasking.</p>
+            </button>
+
+        </div>
+
+        <button id="backButton" onclick="changeScreen(performanceSelection, batteryLifeSelection)"><b>Back</b></button>
+        <button id="nextScreenSkippable" onclick="changeScreen(performanceSelection, cameraSelection); 
+        if(performancePreferences.length == 0){refreshPerformancePreferences()};"><b>Skip</b></button>
+
+    </div>
+    
+    <div id="cameraSelection" class="cameraSelection">
+
+        <img id="quizBackground" src="assets/quizBackground.png">
+        <a href="https://docs.google.com/document/d/1FVjaOIfgic6LVNt01zRSsASwd-EuYc7U4bkIEFH4xYY/edit?usp=sharing" target="_blank">
+            <img src="assets/helpIcon.png" alt="Help" id="helpIcon"></a>
+        <button id="closeButton" onclick="closeQuiz(performanceSelection)"><img src="assets/closeIcon.png"></button>
+        <h2>What type of camera do you need?</h2>
+
+        <div id="cameraOptionsContainer" class="cameraOptionsContainer">
+
+            <button id="selectionButton" onclick="updateCameraPreference('low', this)">
+                <p>Usable</p>
+                <p id="buttonSubtext">Gets the job done for casual photos, video calling etc</p>
+            </button>
+
+            <button id="selectionButton" onclick="updateCameraPreference('medium', this)">
+                <p>Good</p>
+                <p id="buttonSubtext">Good for frequent photos and videos of decent quality</p>
+            </button>
+
+            <button id="selectionButton" onclick="updateCameraPreference('high', this)">
+                <p>Best</p>
+                <p id="buttonSubtext">The best of the best - high quality, lots of features, perfect for camera enthusiasts.</p>
+            </button>
+
+        </div>
+
+        <button id="backButton" onclick="changeScreen(cameraSelection, performanceSelection)"><b>Back</b></button>
+        <button id="nextScreenSkippable" onclick="changeScreen(cameraSelection, featuresSelection); 
+        if(cameraPreferences.length == 0){refreshCameraPreferences()};"><b>Skip</b></button>
+
+    </div>
+
+    <div id="featuresSelection" class="featuresSelection">
+
+        <img id="quizBackground" src="assets/quizBackground.png">
+        <a href="https://docs.google.com/document/d/1FVjaOIfgic6LVNt01zRSsASwd-EuYc7U4bkIEFH4xYY/edit?usp=sharing" target="_blank">
+            <img src="assets/helpIcon.png" alt="Help" id="helpIcon"></a>
+        <button id="closeButton" onclick="closeQuiz(featuresSelection)"><img src="assets/closeIcon.png"></button>
+        <h2>Are there any additional features you would like? Select all that apply</h2>
+
+        <div id="featureOptionsContainer" class="featureOptionsContainer">
+            <button id="selectionButton" onclick="addFeaturePreference(this)">High Refresh Rate</button>
+            <button id="selectionButton" onclick="addFeaturePreference(this)">Wireless Charging</button>
+            <button id="selectionButton" onclick="addFeaturePreference(this)">5G Connectivity</button>
+            <button id="selectionButton" onclick="addFeaturePreference(this)">Water Resistance</button>
+        </div>
+
+        <button id="backButton" onclick="changeScreen(featuresSelection, cameraSelection)"><b>Back</b></button>
+        <button id="nextScreenSkippable" onclick="changeScreen(featuresSelection, suitableDevices); determineSuitableDevices()"><b>Skip</b></button>
+
+    </div>
+
+    <div id="suitableDevices" class="suitableDevices">
+
+        <img id="quizBackground" src="assets/quizBackground.png">
+        <a href="https://docs.google.com/document/d/1FVjaOIfgic6LVNt01zRSsASwd-EuYc7U4bkIEFH4xYY/edit?usp=sharing" target="_blank">
+            <img src="assets/helpIcon.png" alt="Help" id="helpIcon"></a>
+        <button id="closeButton" onclick="closeQuiz(suitableDevices)"><img src="assets/closeIcon.png"></button>
+        <h2>Lets see what matched your preferences</h2>
+
+        <div id="suitableDevicesContainer" class="cardsContainer">
+            <div id="noPhonesMessage" class="noPhonesMessage">
+                <p>Sorry, we could not find any devices to match your preferences :(</p>
+                <p>Try going back and editing your preferences to get a match, making sure the preferences you have entered are reasonable and plausible</p>
+                <p>Additionally, click the help icon for more information</p>
+            </div>
+        </div>
+
+        <button id="backButton" onclick="changeScreen(suitableDevices, featuresSelection)"><b>Back</b></button>
+        <button id="nextScreenSkippable" onclick="changeScreen(suitableDevices, home); determineSuitableDevices()"
+        style="color: white; background-color: #352DFF;"><b>Home</b></button>
+
+    </div>
+
+    <div id="deviceDatabase" class="deviceDatabase">
+
+        <img id="quizBackground" src="assets/quizBackground.png">
+        <a href="https://docs.google.com/document/d/1FVjaOIfgic6LVNt01zRSsASwd-EuYc7U4bkIEFH4xYY/edit?usp=sharing" target="_blank">
+            <img src="assets/helpIcon.png" alt="Help" id="helpIcon"></a>
+        <button id="closeButton" onclick="closeQuiz(deviceDatabase)"><img src="assets/closeIcon.png"></button>
+        <h2>Device Database</h2>
+
+        <div id="allDevicesContainer" class="cardsContainer"></div>
+        
+    </div>
+    
+
+    <script src="phoneData.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

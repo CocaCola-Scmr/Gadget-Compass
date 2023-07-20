@@ -1,0 +1,506 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    color: rgb(30, 30, 30);
+    letter-spacing: 0.6px;
+}
+
+button {
+    cursor: pointer;
+}
+
+#closeButton {
+    background-color: white;
+    color: rgb(30, 30, 30);
+    border: none;
+    font-size: 50px;
+    position: fixed;
+    top: 60px;
+    right: 60px;
+}
+
+#closeButton img {
+    width: 50px;
+}
+
+#helpIcon {
+    position: fixed;
+    top: 60px;
+    left: 60px;
+    padding: 15px;
+    cursor: pointer;
+    width: 60px;
+    z-index: 2;
+    border-radius: 9px;
+}
+
+#quizBackground {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 85vh;
+    z-index: -1;
+}
+
+#nextScreenSkippable {
+    color: #352DFF;
+    border-color: #352DFF;
+    background-color: white;
+    border-style: solid;
+    border-width: 4px;
+    border-radius: 100px;
+    font-size: 24px;
+    padding-block: 15px; /*vertical padding */
+    padding-inline: 45px; /*horizontal padding*/
+    position: fixed;
+    right: 18vw;
+    bottom: 15vh;
+}
+
+#backButton {
+    color: white;
+    background-color: #352DFF;
+    border-color: #352DFF;
+    border-style: solid;
+    border-radius: 100px;
+    font-size: 24px;
+    padding-block: 15px; /*vertical padding */
+    padding-inline: 45px; /*horizontal padding*/
+    position: fixed;
+    left: 18vw;
+    bottom: 15vh;
+}
+
+#selectionButton {
+    margin: 30px;
+    width: 28%;
+    padding-block: 8vh; /*vertical padding */
+    border-width: 5px;
+    border-color: rgb(30, 30, 30);
+    border-style: solid;
+    background-color: white;
+    font-size: 26px;
+    font-weight: bold;
+    border-radius: 28px;
+}
+
+#buttonSubtext {
+    font-weight: 500;
+}
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: 20vh ;
+    width: 75vw;
+    height: 15px;
+    border-radius: 50px;
+    background: #352DFF;
+    outline: none;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: white;
+    border-width: 3px;
+    background: #352DFF;
+    cursor: pointer;
+  }
+
+/* firefox */
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #352DFF;
+    cursor: pointer;
+  }
+
+
+#leftSliderLabel {
+    position: absolute;
+    left: 12.5vw;
+    font-size: 24px;
+    margin-top: -50px;
+  }
+
+#rightSliderLabel {
+    position: absolute;
+    right: 12.5vw;
+    font-size: 24px;
+    margin-top: -50px;
+  }
+
+#sliderThumbLabel {
+    position: absolute;
+}
+
+/* Home page */
+
+.home {
+    margin: -8px;
+    padding-top: 40px;
+    padding-left: 40px;
+    font-size: 18px;
+}
+
+#logo {
+    width: 60px;
+}
+
+h1 {
+    font-size: 40px;
+    width: 40vw;
+    letter-spacing: 1.6px;
+}
+
+h2 {
+    font-size: 45px;
+    margin-top: 28px;
+}
+
+.home p {
+    width: 45vw;
+    line-height: 32px;
+}
+
+#homeImage {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50vw;
+}
+
+#startButton {
+    margin-top: 20px;
+    background-color: #352DFF;
+    color: white;
+    border: none;
+    font-size: 20px;
+    letter-spacing: 0.6px;
+    border-radius: 100px;
+    padding-block: 20px; /*vertical padding */
+    padding-inline: 40px; /*horizontal padding*/
+    box-shadow: 0px 0px 50px 2px #9894ff;
+}
+
+#viewDatabaseButton {
+    background-color: #352DFF;
+    color: white;
+    border: none;
+    font-size: 20px;
+    letter-spacing: 0.6px;
+    border-radius: 100px;
+    padding-block: 12px; /*vertical padding */
+    padding-inline: 25px; /*horizontal padding*/
+    position: absolute;
+    top: 43px;
+    right: 40px;
+}
+
+@media screen and (min-width: 1400px) {
+    #logo {
+        width: 90px;
+    }
+    h1 {
+        margin-top: 7vh;
+        font-size: 55px;
+    }
+    .home {
+        font-size: 20px;
+    }
+    .home p {
+        width: 43vw;
+        line-height: 32px;
+    }
+}
+
+/* Phone brand selection screen */
+
+.brandSelection {
+    display: none;  /* Screen is initially not visible */
+    margin: -8px;
+    padding-block: 20px; /*vertical padding */
+    width: 75vw;
+    margin: auto;
+    font-size: 18px;
+}
+
+.brandSelection p {
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+}
+
+.brandOptionsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -30px;
+  }
+
+@media screen and (max-width: 1500px) {
+    #closeButton {
+        top: 40px;
+        right: 40px;
+    }
+
+    #helpIcon {
+        top: 18px;
+        left: 0;
+        width: 50px;
+    }
+
+    h2 {
+        font-size: 35px;
+        margin-bottom: 27px;
+        margin-top: 5px;
+    }
+
+    #selectionButton {
+        margin: 15px;
+        border-width: 4px;
+        border-radius: 25px;
+    }
+
+    #nextScreenSkippable {
+        right: 18vw;
+        bottom: 5vh;
+    }
+}
+
+/* Price selection screen */
+
+.priceSelection {
+    display: none;  /* Screen is initially not visible */
+    margin: -8px;
+    padding-block: 20px; /*vertical padding */
+    width: 75vw;
+    margin: auto;
+    font-size: 18px;
+}
+
+#priceSliderValue {
+    position: relative;
+    width: 80px;
+    bottom: 90px;
+    font-size: 22px;
+    left: 39%;
+}
+
+@media screen and (max-width: 1500px) {
+    #backButton {
+        left: 18vw;
+        bottom: 5vh;
+    }
+}
+
+/* Screen size selection screen */
+
+.screenSizeSelection {
+    display: none;  /* Screen is initially not visible */
+    margin: -8px;
+    padding-block: 20px; /*vertical padding */
+    width: 75vw;
+    margin: auto;
+    font-size: 18px;
+}
+
+.screenOptionsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -30px;
+  }
+
+.screenOptionsContainer #selectionButton {
+    margin: 20px;
+    width: 45%;
+    padding-block: 5vh; /*vertical padding */
+}
+
+@media screen and (max-height: 730px) {
+    .screenOptionsContainer #selectionButton {
+        margin: 15px;
+        width: 45%;
+        padding-block: 2vh; /*vertical padding */
+    }
+}
+
+/* Battery life selection screen */
+
+.batteryLifeSelection {
+    display: none;  /* Screen is initially not visible */
+    margin: -8px;
+    padding-block: 20px; /*vertical padding */
+    width: 75vw;
+    margin: auto;
+    font-size: 18px;
+}
+
+.batteryLifeOptionsContainer {
+    margin-left: -30px;
+}
+
+.batteryLifeOptionsContainer #selectionButton {
+    margin: 20px;
+    width: 45%;
+    padding-block: 5vh; /*vertical padding */
+    padding-inline: 30px; /*horizontal padding*/
+}
+
+.batteryLifeOptionsContainer #buttonSubtext {
+    font-size: 22px;
+}
+
+@media screen and (max-height: 730px) {
+    .batteryLifeOptionsContainer #selectionButton {
+        margin: 15px;
+        padding-block: 2vh; /*vertical padding */
+    }
+}
+
+/* Performance and camera selection screens */
+
+.performanceSelection, .cameraSelection {
+    display: none;  /* Screen is initially not visible */
+    margin: -8px;
+    padding-block: 20px; /*vertical padding */
+    width: 75vw;
+    margin: auto;
+    font-size: 18px;
+}
+
+.performanceOptionsContainer, .cameraOptionsContainer {
+    margin-left: -30px;
+}
+
+.performanceOptionsContainer #selectionButton, .cameraOptionsContainer #selectionButton {
+    margin: 20px;
+    width: 45%;
+    padding-block: 4vh; /*vertical padding */
+    padding-inline: 40px; /*horizontal padding*/
+}
+
+.cameraOptionsContainer #selectionButton {
+    padding-inline: 60px; /*horizontal padding*/
+}
+
+.performanceOptionsContainer #buttonSubtext {
+    font-size: 22px;
+}
+
+@media screen and (max-height: 800px) {
+    .performanceOptionsContainer #selectionButton, .cameraOptionsContainer #selectionButton {
+        margin: 15px;
+        padding-block: 1.7vh; /*vertical padding */
+        font-size: 24px;
+        padding-inline: 40px; /*horizontal padding*/
+    }
+
+    .performanceOptionsContainer #buttonSubtext, .cameraOptionsContainer #buttonSubtext {
+        font-size: 18px;
+    }
+}
+
+/* Features selection screen */
+
+.featuresSelection {
+    display: none;  /* Screen is initially not visible */
+    margin: -8px;
+    padding-block: 20px; /*vertical padding */
+    width: 75vw;
+    margin: auto;
+    font-size: 18px;
+}
+
+.featureOptionsContainer {
+    margin-left: -30px;
+}
+
+.featureOptionsContainer #selectionButton {
+    margin: 20px;
+    width: 45%;
+    padding-block: 9vh; /*vertical padding */
+    padding-inline: 30px; /*horizontal padding*/
+}
+
+@media screen and (max-height: 730px) {
+    .featureOptionsContainer #selectionButton {
+        margin: 15px;
+    }
+}
+
+
+
+/*device database and suitable devices screen*/
+
+.deviceDatabase {
+    display: none;  /* Screen is initially not visible */
+    margin: -8px;
+    padding-block: 20px; /*vertical padding */
+    width: 75vw;
+    margin: auto;
+    font-size: 20px;
+    width: 80vw;
+}
+
+.cardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -30px;
+}
+
+
+.cardsContainer .card{
+    margin: 20px;
+    width: 25%;
+    height: 30%;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: white;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.cardsContainer img {
+    object-fit: cover;
+    height: 30vh;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+.card a {
+    font-size: 20px;
+    color: #352DFF;
+    text-decoration: none;
+}
+
+.suitableDevices {
+    display: none;  /* Screen is initially not visible */
+    margin: -8px;
+    padding-block: 20px; /*vertical padding */
+    width: 75vw;
+    margin: auto;
+    font-size: 18px;
+    width: 80vw;
+}
+
+#noPhonesMessage {
+    justify-content: center;
+    width: 100%;
+    padding: 17vh 0;
+}
+
+.noPhonesMessage p {
+    text-align: center;
+}
